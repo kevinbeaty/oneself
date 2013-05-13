@@ -1,4 +1,3 @@
-## Oneself
 [![Build Status](https://secure.travis-ci.org/kevinbeaty/oneself.png)](http://travis-ci.org/kevinbeaty/oneself)
 
 ### Generic Function
