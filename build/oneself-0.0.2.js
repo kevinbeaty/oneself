@@ -6,12 +6,13 @@ function ut(fn){
   return f;
 }
 
-var _slice = Array.prototype.slice;
+var _call = Function.call,
+    _slice = Array.prototype.slice;
 
 ut.uncurry = uncurry;
 function uncurry(fn){
   return function(){
-    return fn.call.apply(fn, arguments);
+    return _call.apply(fn, arguments);
   };
 }
 
@@ -20,7 +21,7 @@ function curry(fn){
   return function(){
     var args = _slice.call(arguments);
     args.unshift(this);
-    return fn.apply(fn, args);
+    return fn.apply(null, args);
   };
 }
 
@@ -39,7 +40,6 @@ function shim(obj){
   return generify(obj, {shim:true, props:props});
 }
 
-ut.generify = generify;
 function generify(obj, opts){
   opts = opts || {};
   var shim = opts.shim,

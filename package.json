@@ -1,6 +1,6 @@
 {
   "name": "oneself",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generic function utils",
   "main": "index.js",
   "scripts": {

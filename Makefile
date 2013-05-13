@@ -1,5 +1,5 @@
 PROJECT:=oneself
-VERSION:=0.0.0
+VERSION:=0.0.2
 
 JS_TARGET ?= build/$(PROJECT)-$(VERSION).js
 
@@ -16,7 +16,7 @@ node_modules:
 	npm install
 
 %.min.js: %.js | node_modules
-	`npm bin`/uglifyjs -mt $< > $@
+	`npm bin`/uglifyjs $< > $@
 
 %.gz: %
 	gzip -c9 $^ > $@
