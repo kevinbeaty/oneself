@@ -1,0 +1,29 @@
+{
+  "name": "oneself",
+  "version": "0.0.1",
+  "description": "Generic function utils",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinbeaty/oneself.git"
+  },
+  "keywords": [
+    "generic",
+    "functions",
+    "uncurry",
+    "curry",
+    "uncurryThis",
+    "curryThis",
+    "self",
+    "this"
+  ],
+  "author": "Kevin Beaty",
+  "license": "MIT",
+  "devDependencies": {
+      "uglify-js": "*",
+      "mocha": "*"
+  }
+}

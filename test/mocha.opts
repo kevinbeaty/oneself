@@ -1,0 +1,3 @@
+--no-colors
+--ui bdd
+--reporter spec
