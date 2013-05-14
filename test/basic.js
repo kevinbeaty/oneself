@@ -4,7 +4,8 @@
 var assert = require('assert'),
     oneself = require('../index'),
     array = oneself.array,
-    map = array.map;
+    map = array.map,
+    es5 = require('es5-shim');
 
 describe('array', function(){
   it('map should convert strings to uppercase', function(){
