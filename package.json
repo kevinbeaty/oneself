@@ -27,13 +27,11 @@
     "uglify-js": "*",
     "mocha": "*",
     "es5-shim": "*"
-  }
+  },
   "testling": {
-    "files": {
-      "test/*.js"
-    },
+    "files": "test/*.js",
     "harness":"mocha",
-    "browsers":{
+    "browsers": [
       "ie/6..latest",
       "chrome/20..latest",
       "firefox/10..latest",
@@ -42,6 +40,6 @@
       "iphone/6..latest",
       "ipad/6..latest",
       "andoid-browser/4..latest"
-    }
+    ]
   }
 }
