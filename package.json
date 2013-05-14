@@ -2,7 +2,7 @@
   "name": "oneself",
   "version": "0.0.3",
   "description": "(un)curryThis to avoid [].slice.call, obj.fn.bind(obj), that=this",
-  "main": "index.js",
+  "main": "oneself.js",
   "scripts": {
     "test": "mocha"
   },

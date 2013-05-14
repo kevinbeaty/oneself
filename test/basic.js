@@ -3,7 +3,7 @@
 
 var assert = require('assert'),
     es5 = require('es5-shim'),
-    oneself = require('../index'),
+    oneself = require('..'),
     array = oneself.array,
     map = array.map;
 
