@@ -54,7 +54,7 @@ describe('anon obj', function(){
     c: function(w){
       return this.b+' '+w+'!';
     },
-    a: oneself.curry(function(self, cb){
+    a: oneself.curryThis(function(self, cb){
       setTimeout(function(){
         cb(self.b);
       }, 100);
@@ -65,13 +65,13 @@ describe('anon obj', function(){
     b: 'bye'
   };
 
-  it('should uncurry this to make generic function', function(){
+  it('should uncurry this to make function', function(){
     var f = oneself(x.c);
     equal(f(x, 'world'), 'hi world!');
     equal(f(y, 'world'), 'bye world!');
   });
 
-  it('should create generic_ to invoke on provided self', function(){
+  it('should create _ to invoke on provided self', function(){
     equal(oneself(x.c)._('world')(x), 'hi world!');
     equal(oneself(x.c)._('world')(y), 'bye world!');
 
@@ -128,12 +128,12 @@ describe('Point', function(){
 
   oneself.shim(Point);
 
-  it('should create generic func describe', function(){
+  it('should create func describe', function(){
     var describePoint = oneself(Point.prototype.describe);
     equal(describePoint(p1), p1.describe());
   });
 
-  it('should create generic func add_', function(){
+  it('should create func add_', function(){
     var add1_1 = oneself(Point.prototype.add)._(1,1);
     Point.equals(add1_1(p1), point(2, 3));
   });

@@ -1,7 +1,7 @@
 {
   "name": "oneself",
-  "version": "0.0.2",
-  "description": "Generic function utils",
+  "version": "0.0.3",
+  "description": "(un)curryThis to avoid [].slice.call, obj.fn.bind(obj), that=this",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -11,14 +11,15 @@
     "url": "https://github.com/kevinbeaty/oneself.git"
   },
   "keywords": [
-    "generic",
     "functions",
     "uncurry",
     "curry",
     "uncurryThis",
     "curryThis",
     "self",
-    "this"
+    "this",
+    "static",
+    "bind"
   ],
   "author": "Kevin Beaty",
   "license": "MIT",

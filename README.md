@@ -1,17 +1,15 @@
 [![Build Status](https://secure.travis-ci.org/kevinbeaty/oneself.png)](http://travis-ci.org/kevinbeaty/oneself)
 
-### Generic Function
-
-Oneself is a way to build generic functions: functions that
-take this as the first parameter.
+Oneself turns methods into functions with an explicit self.
 
 So instead of writing:
 
 ```javascript
-Array.prototype.slice(arguments, 1);
+Array.prototype.slice.call(arguments, 1);
 ```
 
-you can create a generic function:
+you can create a reusable function that takes `this` as the first parameter.
+
 
 ```javascript
 var slice = oneself(Array.prototype.slice);
@@ -20,7 +18,7 @@ slice(arguments, 1)
 ```
 
 As a convenenience, `oneself` provides all `Array` methods
-as generic functions under `oneself.array`, along with functions
+as functions under `oneself.array`, along with functions
 in `string`, `date`, `regexp` and `object`.
 
 ```javascript
@@ -35,8 +33,7 @@ listEqual(
   [2011, 2012]);
 ```
 
-If desired, you can shim Array methods and [some implementations][2]
-already do this.
+If desired, you can extend the object itself:
 
 ```javascript
 oneself.array.shim();
@@ -48,9 +45,9 @@ listEqual(
 
 ```
 
-As shown above, generic functions are useful to map methods over
+As shown above, these functions are useful to map `this` over
 collections of objects. `oneself` also provides placeholder functions
-that allow you to map methods with specified arguments. This are named
+that allow you to map methods with specified arguments, named
 the same as the methods, with a `_` suffix.
 
 ```javascript
@@ -60,7 +57,8 @@ listEqual(
 ```
 
 ### Objects
-You can create generic functions from any object.
+You can create functions from any object as an alternative to binding
+`this`.
 
 ```javascript
   function Point(x, y){
@@ -99,7 +97,7 @@ equals(add1_1(p1), point(2, 3));
 ```
 
 Although it might be better to shim your objects. This
-will create generic functions for all enumerable methods
+will create functions for all enumerable methods
 along with `toString`.
 
 ```javascript
@@ -112,13 +110,10 @@ listEqual(
 
 ### (un)curryThis
 
-Making a generic function from a prototype is also called
-`uncurryThis`, [described here][1].
+`oneself` makes use of `uncurryThis`, [described here][1],
+which  is also available under `oneself.uncurryThis`
 
-`uncurryThis` is also available under `oneself.uncurry`
-and the companion `curryThis` is called `oneself.curry`.
-
-`curryThis` can be used to avoid `that = this`:
+The companion, `curryThis`,  can be used to avoid `that = this`:
 
 ```javascript
   var x = {
@@ -126,7 +121,7 @@ and the companion `curryThis` is called `oneself.curry`.
     c: function(w){
       return this.b+' '+w+'!';
     },
-    a: oneself.curry(function(self, cb){
+    a: oneself.curryThis(function(self, cb){
       setTimeout(function(){
         cb(self.b);
       }, 100);
@@ -137,4 +132,3 @@ and the companion `curryThis` is called `oneself.curry`.
 ```
 
 [1]: http://www.2ality.com/2011/11/uncurrying-this.html
-[2]: http://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/prototype#Generic_methods

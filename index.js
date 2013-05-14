@@ -1,7 +1,7 @@
 (function(define){'use strict'; define(function(){
 
 function ut(fn){
-  var f = uncurry(fn);
+  var f = uncurryThis(fn);
   f._ = invoke(fn);
   return f;
 }
@@ -9,15 +9,15 @@ function ut(fn){
 var _call = Function.call,
     _slice = Array.prototype.slice;
 
-ut.uncurry = uncurry;
-function uncurry(fn){
+ut.uncurryThis = uncurryThis;
+function uncurryThis(fn){
   return function(){
     return _call.apply(fn, arguments);
   };
 }
 
-ut.curry = curry;
-function curry(fn){
+ut.curryThis = curryThis;
+function curryThis(fn){
   return function(){
     var args = _slice.call(arguments);
     args.unshift(this);
