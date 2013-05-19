@@ -1,20 +1,18 @@
 "use strict";
-/*globals describe, it*/
+/*globals describe, it, oneself */
 
-var assert = require('assert'),
-    oneself = require('..'),
-    array = oneself.array,
+var array = oneself.array,
     map = array.map;
 
 describe('array', function(){
   it('map should convert strings to uppercase', function(){
-    listEqual(
+    equal(
       map(['ab', 'cd'], oneself.string.toUpperCase),
       ['AB', 'CD']);
   });
 
   it('map should map regexp.test_', function(){
-    listEqual(
+    equal(
       map([/(.)/, /g$/, /o/, /o$/], oneself.regexp.test_('dog')),
       [true, true, true, false]);
   });
@@ -22,18 +20,18 @@ describe('array', function(){
   it('map should push_ on values on each array', function(){
     var a = [[1,2,3], [3,4], [5,6,7]],
         lens = map(a, array.push_(1, 2));
-    listEqual(a, [[1,2,3,1,2], [3,4,1,2], [5,6,7,1,2]]);
-    listEqual(lens, [5, 4, 5]);
+    equal(a, [[1,2,3,1,2], [3,4,1,2], [5,6,7,1,2]]);
+    equal(lens, [5, 4, 5]);
   });
 
   it('map date should get fullYear', function(){
-    listEqual(
+    equal(
       map([new Date(2011, 3, 15), new Date(2012, 5, 25)], oneself.date.getFullYear),
       [2011, 2012]);
   });
 
   it('filter should remove falsy', function(){
-    listEqual(
+    equal(
       array.filter([1, 2, 0, NaN, 4, false, 5, null], Boolean),
       [1, 2, 4, 5]);
   });
@@ -41,7 +39,7 @@ describe('array', function(){
   it('should shim string and array', function(){
     oneself.array.shim();
     oneself.string.shim();
-    listEqual(
+    equal(
       Array.map(['eB', 'CF'], String.toLowerCase),
       ['eb', 'cf']);
   });
@@ -158,23 +156,33 @@ describe('Point', function(){
   });
 
   it('should map toString', function(){
-    listEqual(
+    equal(
       map([point(1,2), point(3,4)], Point.toString),
       ['(1, 2)', '(3, 4)']);
   });
 
   it('should map add_', function(){
-    listEqual(
+    equal(
       map(map([point(1,2), point(3,4)], Point.add_(10, 20)), Point.toString),
       ['(11, 22)', '(13, 24)']);
   });
 });
 
 function equal(one, two){
-  assert.equal(one, two);
-}
-
-function listEqual(one, two){
-  assert.deepEqual(one, two);
+  var i = 0, len = one.length;
+  if(typeof len !== 'undefined'){
+    if(len !== two.length){
+      throw new Error('Array lengths different '+len+ ' '+two.length);
+    }
+    for(; i<len; i++){
+      if(one[i] != one && two[i] != two){
+        equal(one[i], two[i]);
+      } else if(one != two){
+        throw new Error(one +' != '+two);
+      }
+    }
+  } else if (one != two){
+    throw new Error(one +' != '+two);
+  }
 }
 

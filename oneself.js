@@ -113,7 +113,7 @@ ut.string = mixin(String, [
 return ut;
 });})(typeof define === 'function' && define.amdi ? define :
 function(factory){
-  'use strict';
+  /*jshint strict:false */
   if(typeof exports === 'object'){
     module.exports = factory();
   } else {
