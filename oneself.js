@@ -1,5 +1,7 @@
-(function(define){'use strict'; define(function(){
+'use strict';
+require('es5-shim');
 
+module.exports = ut;
 function ut(fn){
   var f = uncurryThis(fn);
   f._ = invoke(fn);
@@ -108,15 +110,3 @@ ut.string = mixin(String, [
   'trim', 'trimLeft', 'trimRight', 'toLocaleLowerCase', 'toString',
   'toLocaleUpperCase', 'localeCompare', 'match', 'search', 'replace',
   'split', 'substr', 'concat', 'slice', 'fromCharCode']);
-
-// Boilerplate for AMD, Node, and browser global
-return ut;
-});})(typeof define === 'function' && define.amdi ? define :
-function(factory){
-  'use strict';
-  if(typeof exports === 'object'){
-    module.exports = factory();
-  } else {
-    this.oneself = factory();
-  }
-});
