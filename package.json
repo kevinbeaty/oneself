@@ -34,14 +34,9 @@
     "files": "test/*.js",
     "harness": "mocha",
     "browsers": [
-      "ie/8..latest",
-      "chrome/20..latest",
-      "firefox/10..latest",
-      "safari/latest",
-      "opera/11.0..latest",
-      "iphone/6..latest",
-      "ipad/6..latest",
-      "andoid-browser/4..latest"
+      "chrome/latest",
+      "firefox/latest",
+      "safari/latest"
     ]
   }
 }
