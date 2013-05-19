@@ -2,7 +2,7 @@
 /*globals describe, it*/
 
 var assert = require('assert'),
-    oneself = require('../oneself'),
+    oneself = require('..'),
     array = oneself.array,
     map = array.map;
 
