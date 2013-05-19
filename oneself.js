@@ -53,10 +53,12 @@ function generify(obj, opts){
 
   for(; i < len; ++i){
     prop = props[i];
-    fn = ut(proto[prop]);
-
-    g[prop] = fn;
-    g[prop+'_'] = fn._;
+    fn = proto[prop];
+    if(fn){
+      fn = ut(fn);
+      g[prop] = fn;
+      g[prop+'_'] = fn._;
+    }
   }
   return g;
 }
