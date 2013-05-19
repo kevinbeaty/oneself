@@ -1,6 +1,5 @@
-'use strict';
+(function(define){'use strict'; define(function(){
 
-module.exports = ut;
 function ut(fn){
   var f = uncurryThis(fn);
   f._ = invoke(fn);
@@ -52,12 +51,10 @@ function generify(obj, opts){
 
   for(; i < len; ++i){
     prop = props[i];
-    fn = proto[prop];
-    if(fn){
-      fn = ut(fn);
-      g[prop] = fn;
-      g[prop+'_'] = fn._;
-    }
+    fn = ut(proto[prop]);
+
+    g[prop] = fn;
+    g[prop+'_'] = fn._;
   }
   return g;
 }
@@ -111,3 +108,15 @@ ut.string = mixin(String, [
   'trim', 'trimLeft', 'trimRight', 'toLocaleLowerCase', 'toString',
   'toLocaleUpperCase', 'localeCompare', 'match', 'search', 'replace',
   'split', 'substr', 'concat', 'slice', 'fromCharCode']);
+
+// Boilerplate for AMD, Node, and browser global
+return ut;
+});})(typeof define === 'function' && define.amdi ? define :
+function(factory){
+  'use strict';
+  if(typeof exports === 'object'){
+    module.exports = factory();
+  } else {
+    this.oneself = factory();
+  }
+});

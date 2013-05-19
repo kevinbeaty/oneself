@@ -1,9 +1,8 @@
 {
   "name": "oneself",
-  "version": "0.0.4",
-  "description": "Statics, (un)curryThis to avoid [].slice.call, that=this",
+  "version": "0.0.3",
+  "description": "(un)curryThis to avoid [].slice.call, obj.fn.bind(obj), that=this",
   "main": "oneself.js",
-  "browser": "browser.js",
   "scripts": {
     "test": "mocha"
   },
@@ -25,23 +24,22 @@
   "author": "Kevin Beaty",
   "license": "MIT",
   "devDependencies": {
-    "uglify-js": "~2.3.5",
-    "mocha": "~1.9.0",
-    "browserify": "~2.14.1",
-    "es5-shim": "~2.0.11"
+    "uglify-js": "*",
+    "mocha": "*",
+    "es5-shim": "*"
   },
   "testling": {
     "files": "test/*.js",
-    "harness": "mocha",
+    "harness":"mocha",
     "browsers": [
       "ie/6..latest",
       "chrome/20..latest",
-      "firefox/15..latest",
+      "firefox/10..latest",
+      "safari/latest",
       "opera/11.0..latest",
-      "safari/5.1..latest",
-      "android-browser/4.2..latest",
+      "iphone/6..latest",
       "ipad/6..latest",
-      "iphone/6..latest"
+      "andoid-browser/4..latest"
     ]
   }
 }

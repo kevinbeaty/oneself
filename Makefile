@@ -1,5 +1,5 @@
 PROJECT:=oneself
-VERSION:=0.0.4
+VERSION:=0.0.3
 
 JS_TARGET ?= build/$(PROJECT)-$(VERSION).js
 
@@ -24,7 +24,7 @@ node_modules:
 js: $(JS_TARGET) $(JS_TARGET:.js=.min.js) $(JS_TARGET:.js=.min.js.gz)
 
 $(JS_TARGET): $(PROJECT).js | build
-	`npm bin`/browserify $< > $@
+	cp $< $@
 
 build:
 	mkdir -p build

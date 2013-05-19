@@ -2,6 +2,7 @@
 /*globals describe, it*/
 
 var assert = require('assert'),
+    es5 = require('es5-shim'),
     oneself = require('..'),
     array = oneself.array,
     map = array.map;
