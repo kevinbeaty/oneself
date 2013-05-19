@@ -1,5 +1,4 @@
 'use strict';
-require('es5-shim');
 
 module.exports = ut;
 function ut(fn){
