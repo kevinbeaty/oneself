@@ -1,7 +1,7 @@
 {
   "name": "oneself",
-  "version": "0.0.3",
-  "description": "(un)curryThis to avoid [].slice.call, obj.fn.bind(obj), that=this",
+  "version": "0.0.4",
+  "description": "Add, static methods to avoid [].slice.call, that=this",
   "main": "oneself.js",
   "scripts": {
     "test": "mocha"
@@ -11,35 +11,15 @@
     "url": "https://github.com/kevinbeaty/oneself.git"
   },
   "keywords": [
-    "functions",
-    "uncurry",
-    "curry",
     "uncurryThis",
     "curryThis",
-    "self",
-    "this",
-    "static",
-    "bind"
+    "static method",
+    "class method"
   ],
   "author": "Kevin Beaty",
   "license": "MIT",
   "devDependencies": {
-    "uglify-js": "*",
-    "mocha": "*",
-    "es5-shim": "*"
-  },
-  "testling": {
-    "files": "test/*.js",
-    "harness":"mocha",
-    "browsers": [
-      "ie/6..latest",
-      "chrome/20..latest",
-      "firefox/10..latest",
-      "safari/latest",
-      "opera/11.0..latest",
-      "iphone/6..latest",
-      "ipad/6..latest",
-      "andoid-browser/4..latest"
-    ]
+    "mocha": "~1.9.0",
+    "uglify-js": "~2.3.5"
   }
 }
